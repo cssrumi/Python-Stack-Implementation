@@ -56,6 +56,18 @@ class Stack:
                 '"You can only add Stack objects.\n' +
                 'To add objects to stack use .push() method"')
 
+    def to_list(self):
+        result = []
+        if self.item is not None:
+            item = self.item
+            prev = item.prev_item
+            result.append(item.obj)
+            while prev is not None:
+                result.append(prev.obj)
+                prev = prev.prev_item
+
+        return result
+
     def __iter__(self):
         return self
 
