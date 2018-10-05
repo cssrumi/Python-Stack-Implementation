@@ -24,8 +24,10 @@ def main():
     print('size of stack2 =', s2.size())
     print('size of stack3 =', s3.size())
 
+    [print(obj) for obj in s3.to_list()]
+
     [print(obj) for obj in s3]
-    
+
     s4 = Stack()
     for obj in s4:
         print(obj)
