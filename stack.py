@@ -54,7 +54,7 @@ class Stack:
         else:
             raise ValueError(
                 '"You can only add Stack objects.\n' +
-                'To add objects to stack use .pop() method"')
+                'To add objects to stack use .push() method"')
 
 
 class Item:
