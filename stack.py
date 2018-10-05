@@ -56,6 +56,15 @@ class Stack:
                 '"You can only add Stack objects.\n' +
                 'To add objects to stack use .push() method"')
 
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.item is None:
+            raise StopIteration
+        result = self.pop()
+        return result
+
 
 class Item:
     def __init__(self, obj, prev_item):
