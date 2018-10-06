@@ -15,11 +15,16 @@ class Stack:
 
     def pop(self):
         item = self.item
+        if item is None:
+            raise Exception("Stack is empty")
         self.item = self.item.prev_item
         return item.obj
 
     def top(self):
-        return self.item.obj
+        if self.item.obj is not None:
+            return self.item.obj
+        else:
+            raise Exception("Stack is empty")
 
     def size(self):
         if self.item.obj is None:
@@ -38,16 +43,16 @@ class Stack:
         return False
 
     def __add__(self, other):
-        if other.__class__.__name__ == self.__class__.__name__:
+        if other.__class__ == self.__class__:
             other = copy.deepcopy(other)
             if self.item is None:
                 self.item = other.item
             else:
-                other_item = other.item
-                other_prev = other.item.prev_item
-                while other_prev is not None:
-                    other_item, other_prev = other_prev, other_prev.prev_item
-                other_item.prev_item = self.item
+                item = other.item
+                prev = other.item.prev_item
+                while prev is not None:
+                    item, prev = prev, prev.prev_item
+                item.prev_item = self.item
             new_stack = Stack()
             new_stack.item = other.item
             return new_stack
